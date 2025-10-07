@@ -1,0 +1,86 @@
+CREATE TABLE Members (
+    Member_ID INT PRIMARY KEY,
+    Name VARCHAR(255),
+    Email VARCHAR(255),
+    Join_Date DATE
+);
+
+-- Insert 20 sample rows for Members table
+INSERT INTO Members (Member_ID, Name, Email, Join_Date)
+VALUES
+(1, 'Alice Johnson', 'alice@example.com', '2023-05-10'),
+(2, 'Bob Smith', 'bob@example.com', '2023-06-15'),
+(3, 'Charlie Brown', 'charlie@example.com', '2023-07-20'),
+(4, 'Diana Prince', 'diana@example.com', '2023-08-01'),
+(5, 'Eve Adams', 'eve@example.com', '2023-09-05'),
+(6, 'Frank Miller', 'frank@example.com', '2023-01-20'),
+(7, 'Grace Lee', 'grace@example.com', '2023-03-12'),
+(8, 'Henry Johnson', 'henry@example.com', '2023-04-08'),
+(9, 'Isla Clark', 'isla@example.com', '2023-02-25'),
+(10, 'Jack Taylor', 'jack@example.com', '2023-07-02'),
+(11, 'Kim Davis', 'kim@example.com', '2023-09-15'),
+(12, 'Liam White', 'liam@example.com', '2023-06-27'),
+(13, 'Mona Perez', 'mona@example.com', '2023-03-29'),
+(14, 'Nina Roberts', 'nina@example.com', '2023-01-16'),
+(15, 'Oscar Martinez', 'oscar@example.com', '2023-05-05'),
+(16, 'Paul Walker', 'paul@example.com', '2023-08-10'),
+(17, 'Quincy Zhang', 'quincy@example.com', '2023-06-20'),
+(18, 'Rachel Green', 'rachel@example.com', '2023-02-10'),
+(19, 'Sam Wilson', 'sam@example.com', '2023-09-01'),
+(20, 'Tina Foster', 'tina@example.com', '2023-04-25');
+
+CREATE TABLE Books (
+    Book_ID INT PRIMARY KEY,
+    Title VARCHAR(255),
+    Author VARCHAR(255),
+    Genre VARCHAR(100),
+    Available_Copies INT
+);
+
+-- Insert 10 sample rows for Books table
+INSERT INTO Books (Book_ID, Title, Author, Genre, Available_Copies)
+VALUES
+(1, 'The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction', 10),
+(2, '1984', 'George Orwell', 'Fiction', 8),
+(3, 'Clean Code', 'Robert C. Martin', 'Tech', 5),
+(4, 'The Pragmatic Programmer', 'Andrew Hunt', 'Tech', 7),
+(5, 'Atomic Habits', 'James Clear', 'Self-Help', 12),
+(6, 'To Kill a Mockingbird', 'Harper Lee', 'Fiction', 6),
+(7, 'The Catcher in the Rye', 'J.D. Salinger', 'Fiction', 4),
+(8, 'The Lean Startup', 'Eric Ries', 'Business', 9),
+(9, 'The Subtle Art of Not Giving a F*ck', 'Mark Manson', 'Self-Help', 11),
+(10, 'The Art of Computer Programming', 'Donald Knuth', 'Tech', 3);
+
+CREATE TABLE Borrowing_Transactions (
+    Borrow_ID INT PRIMARY KEY,
+    Member_ID INT,
+    Book_ID INT,
+    Borrow_Date DATE,
+    Return_Date DATE,
+    FOREIGN KEY (Member_ID) REFERENCES Members(Member_ID),
+    FOREIGN KEY (Book_ID) REFERENCES Books(Book_ID)
+);
+
+-- Insert 20 sample rows for Borrowing Transactions table
+INSERT INTO Borrowing_Transactions (Borrow_ID, Member_ID, Book_ID, Borrow_Date, Return_Date)
+VALUES
+(1, 1, 2, '2023-09-01', '2023-09-15'),
+(2, 2, 3, '2023-09-05', '2023-09-19'),
+(3, 3, 1, '2023-09-07', '2023-09-21'),
+(4, 4, 5, '2023-09-10', '2023-09-24'),
+(5, 5, 4, '2023-09-12', '2023-09-26'),
+(6, 6, 7, '2023-08-15', '2023-08-29'),
+(7, 7, 8, '2023-07-10', '2023-07-24'),
+(8, 8, 9, '2023-06-25', '2023-07-09'),
+(9, 9, 10, '2023-05-15', '2023-05-29'),
+(10, 10, 6, '2023-04-05', '2023-04-19'),
+(11, 11, 3, '2023-03-10', '2023-03-24'),
+(12, 12, 4, '2023-02-20', '2023-03-06'),
+(13, 13, 2, '2023-01-10', '2023-01-24'),
+(14, 14, 5, '2023-02-05', '2023-02-19'),
+(15, 15, 8, '2023-03-01', '2023-03-15'),
+(16, 16, 9, '2023-04-10', '2023-04-24'),
+(17, 17, 6, '2023-05-05', '2023-05-19'),
+(18, 18, 7, '2023-06-01', '2023-06-15'),
+(19, 19, 1, '2023-07-05', '2023-07-19'),
+(20, 20, 3, '2023-08-20', '2023-09-03');
